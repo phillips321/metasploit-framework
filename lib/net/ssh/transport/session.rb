@@ -74,6 +74,7 @@ module Net; module SSH; module Transport
           Rex::Socket::Tcp.create(
           	'PeerHost' => @host,
           	'PeerPort' => @port,
+            'Proxies' => options[:proxies],
           	'Context'  => {
           	  'Msf'          => options[:msframework],
           	  'MsfExploit'   => options[:msfmodule]
@@ -81,8 +82,8 @@ module Net; module SSH; module Transport
           )
         }
         # Tell MSF to automatically close this socket on error or completion...
-		  # This prevents resource leaks.
-		  options[:msfmodule].add_socket(@socket) if options[:msfmodule]
+      # This prevents resource leaks.
+      options[:msfmodule].add_socket(@socket) if options[:msfmodule]
       end
 
       @socket.extend(PacketStream)

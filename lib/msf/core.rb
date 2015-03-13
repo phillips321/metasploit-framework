@@ -18,7 +18,17 @@ require 'rex'
 require 'rex/ui'
 
 module Msf
-	LogSource = "core"
+  autoload :Author, 'msf/core/author'
+  autoload :Platform, 'msf/core/platform'
+  autoload :Reference, 'msf/core/reference'
+  autoload :SiteReference, 'msf/core/site_reference'
+  autoload :Target, 'msf/core/target'
+
+  #
+  # Constants
+  #
+
+  LogSource = "core"
 end
 
 # General
@@ -35,12 +45,13 @@ require 'msf/core/framework'
 require 'msf/core/db_manager'
 require 'msf/core/event_dispatcher'
 require 'msf/core/module_manager'
+require 'msf/core/module_set'
 require 'msf/core/plugin_manager'
 require 'msf/core/session'
 require 'msf/core/session_manager'
 
 
-	
+
 # Wrappers
 require 'msf/core/encoded_payload'
 
@@ -56,6 +67,19 @@ require 'msf/core/nop'
 require 'msf/core/payload'
 require 'msf/core/post'
 
+# Custom HTTP Modules
+require 'msf/http/wordpress'
+require 'msf/http/typo3'
+require 'msf/http/jboss'
+
+# Kerberos Support
+require 'msf/kerberos/client'
+
+# Java RMI Support
+require 'msf/java/rmi/client'
+
+# Java JMX Support
+require 'msf/java/jmx'
 
 # Drivers
 require 'msf/core/exploit_driver'
